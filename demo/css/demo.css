@@ -1,0 +1,40 @@
+body {
+  box-sizing: border-box;
+}
+
+body * {
+  box-sizing: inherit;
+}
+
+.container {
+  max-width: 1070px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.row {
+  margin: 0 -15px;
+}
+
+.row::before,
+.row::after {
+  content: '';
+  display: table;
+}
+
+.row::after {
+  clear: both;
+}
+
+[class^="col-"] {
+  padding: 0 15px;
+  float: left;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+.col-9 {
+  width: 75%;
+}
