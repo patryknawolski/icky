@@ -1,0 +1,9 @@
+# OS or Editor folders
+.DS_Store
+
+# Folders to ignore
+bower_components
+node_modules
+
+# Dev files to ignore
+dist/*.map
