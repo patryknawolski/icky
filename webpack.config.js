@@ -9,7 +9,7 @@ module.exports = {
     publicPath: 'dist/',
     library: 'Icky',
     libraryTarget: 'var',
-    filename: 'plugin.js'
+    filename: 'icky.js'
   },
   devServer: {
     contentBase: 'demo/',
@@ -37,7 +37,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('plugin.css'),
+    new ExtractTextPlugin('icky.css'),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false

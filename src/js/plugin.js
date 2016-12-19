@@ -1,11 +1,11 @@
 /**
- * *******************************************************
- * Plugin Boilerplate - a bootstrap for creating web plugins by @patryknawolski
- * *******************************************************
+ * *************************************************************
+ * Icky - a plugin for making elements sticky by @patryknawolski
+ * *************************************************************
  */
 
 // Styles
-import styles from './../sass/plugin.scss' // eslint-disable-line no-unused-vars
+import styles from './../sass/icky.scss' // eslint-disable-line no-unused-vars
 
 // Modules, libs & helpers
 import handleScroll from './helpers/handleScroll'
