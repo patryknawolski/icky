@@ -1,10 +1,23 @@
 const stick = function stick (el, className) {
-  el.node.classList.add(className)
+  let { node } = el
+  let elWidth = node.getBoundingClientRect().width
+
+  node.classList.add(className)
+  node.style.width = `${elWidth}px`
+  node.style.position = 'fixed'
+  node.style.top = `${el.offset}px`
+
   el.isSticky = true
 }
 
 const unstick = function stick (el, className) {
-  el.node.classList.remove(className)
+  let { node } = el
+
+  node.classList.remove(className)
+  node.style.width = null
+  node.style.position = null
+  node.style.top = null
+
   el.isSticky = false
 }
 
@@ -15,7 +28,7 @@ const handleScroll = function (elements, options) {
   const scrollTop = window.pageYOffset
 
   elements.forEach((el) => {
-    const threshold = el.node.offsetTop - el.offset
+    const threshold = el.initialOffsetTop - el.offset
     const passedThreshold = scrollTop >= threshold
 
     if (passedThreshold) {

@@ -33,6 +33,7 @@ const collect = function () {
   let extendedElements = Array.prototype.map.call(elements, el => {
     return {
       node: el,
+      initialOffsetTop: el.offsetTop,
       offset: parseInt(el.getAttribute('data-icky-offset')),
       isSticky: false
     }
