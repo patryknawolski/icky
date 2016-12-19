@@ -58,8 +58,13 @@ body * {
   box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 
+.block {
+  height: 100px;
+  background-color: red;
+}
+
 /* Layout */
 
 body {
-  margin: 50px 0 100px;
+  margin: 250px 0 100px;
 }
