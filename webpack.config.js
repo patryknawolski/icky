@@ -7,6 +7,8 @@ module.exports = {
   output: {
     path: './dist',
     publicPath: 'dist/',
+    library: 'Icky',
+    libraryTarget: 'var',
     filename: 'plugin.js'
   },
   devServer: {
