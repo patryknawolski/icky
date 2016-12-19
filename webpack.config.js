@@ -2,7 +2,7 @@ var webpack = require('webpack')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
-  entry: './src/js/plugin.js',
+  entry: './src/js/icky.js',
   devtool: 'source-map',
   output: {
     path: './dist',
