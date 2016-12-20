@@ -44,9 +44,9 @@ const handleScroll = function (elements, options) {
         stick(el, options.className)
       }
     } else if (passedParentEnd) {
-      if (el.isSticky) unstick(el, options.className, true)
+      if (el.isSticky) unstick(el, options.classNameSticky, true)
     } else {
-      if (el.isSticky) unstick(el, options.className)
+      if (el.isSticky) unstick(el, options.classNameSticky)
     }
   })
 }

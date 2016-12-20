@@ -14,7 +14,8 @@ import handleScroll from './helpers/handleScroll'
  * Options
  */
 let defaults = {
-  className: 'icky-is-sticky',
+  selector: '.icky',
+  classNameSticky: 'icky-is-sticky',
   offset: 100
 }
 
@@ -29,7 +30,7 @@ let elements = []
  * Collect elements
  */
 const collect = function () {
-  let elements = document.querySelectorAll('[data-icky]')
+  let elements = document.querySelectorAll(settings.selector)
   let extendedElements = Array.prototype.map.call(elements, el => {
     let node = el
     let offset = parseInt(el.getAttribute('data-icky-offset'))
