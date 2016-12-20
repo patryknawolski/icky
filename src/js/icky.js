@@ -31,11 +31,18 @@ let elements = []
 const collect = function () {
   let elements = document.querySelectorAll('[data-icky]')
   let extendedElements = Array.prototype.map.call(elements, el => {
+    let node = el
+    let offset = parseInt(el.getAttribute('data-icky-offset'))
+    let parentEl = node.parentNode
+
     return {
-      node: el,
-      initialOffsetTop: el.offsetTop,
-      offset: parseInt(el.getAttribute('data-icky-offset')),
-      isSticky: false
+      height: node.getBoundingClientRect().height,
+      node,
+      offset,
+      isSticky: false,
+      parentEl,
+      parentEnd: parentEl.offsetTop + parentEl.getBoundingClientRect().height,
+      threshold: node.offsetTop - offset
     }
   })
 
@@ -48,6 +55,12 @@ const collect = function () {
 const init = function (options = {}) {
   settings = Object.assign({}, defaults, options)
   elements = collect()
+
+  elements.forEach(el => {
+    let parentElPosition = window.getComputedStyle(el.parentEl).getPropertyValue('position')
+
+    if (parentElPosition === 'static') el.parentEl.style.position = 'relative'
+  })
 
   window.addEventListener('scroll', () => handleScroll(elements, settings))
 }
