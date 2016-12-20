@@ -41,7 +41,7 @@ const handleScroll = function (elements, options) {
 
     if (passedThreshold && !passedParentEnd) {
       if (!el.isSticky) {
-        stick(el, options.className)
+        stick(el, options.classNameSticky)
       }
     } else if (passedParentEnd) {
       if (el.isSticky) unstick(el, options.classNameSticky, true)
