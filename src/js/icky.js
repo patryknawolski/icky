@@ -32,18 +32,27 @@ let elements = []
 const collect = function () {
   let elements = document.querySelectorAll(settings.selector)
   let extendedElements = Array.prototype.map.call(elements, el => {
+    let height
+    let marginBottom
+    let marginTop
     let node = el
+    let nodeComputedStyle = window.getComputedStyle(node)
     let offset = parseInt(el.getAttribute('data-icky-offset'))
-    let parentEl = node.parentNode
+    let parentNode = node.parentNode
+    let parentOffset = parentNode.offsetTop
+
+    marginBottom = parseInt(nodeComputedStyle['margin-bottom'])
+    marginTop = parseInt(nodeComputedStyle['margin-top'])
+    height = node.offsetHeight + marginTop + marginBottom
 
     return {
-      height: node.getBoundingClientRect().height,
+      height,
       node,
       offset,
       isSticky: false,
-      parentEl,
-      parentEnd: parentEl.offsetTop + parentEl.getBoundingClientRect().height,
-      threshold: node.offsetTop - offset
+      parentNode,
+      parentEnd: parentOffset + parentNode.offsetHeight,
+      threshold: parentOffset + node.offsetTop - marginTop - offset
     }
   })
 
@@ -58,9 +67,9 @@ const init = function (options = {}) {
   elements = collect()
 
   elements.forEach(el => {
-    let parentElPosition = window.getComputedStyle(el.parentEl).getPropertyValue('position')
+    let parentNodePosition = window.getComputedStyle(el.parentNode).getPropertyValue('position')
 
-    if (parentElPosition === 'static') el.parentEl.style.position = 'relative'
+    if (parentNodePosition === 'static') el.parentNode.style.position = 'relative'
   })
 
   window.addEventListener('scroll', () => handleScroll(elements, settings))
