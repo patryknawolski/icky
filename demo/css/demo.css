@@ -1,70 +1,7 @@
-/* Base */
-
-body {
-  box-sizing: border-box;
-}
-
-body * {
-  box-sizing: inherit;
-}
-
-/* Grid */
-
-.container {
-  max-width: 1070px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-.row {
-  margin: 0 -15px;
+.wrapper {
+  margin: 100px 0;
 }
 
 .row--flex {
   display: flex;
-  flex-wrap: wrap;
-}
-
-.row::before,
-.row::after {
-  content: '';
-  display: table;
-}
-
-.row::after {
-  clear: both;
-}
-
-[class^="col-"] {
-  padding: 0 15px;
-  float: left;
-}
-
-.col-3 {
-  width: 25%;
-}
-
-.col-6 {
-  width: 50%;
-}
-
-/* Components */
-
-.panel {
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 1px 1px rgba(0,0,0,.05);
-}
-
-.block {
-  height: 100px;
-  background-color: red;
-}
-
-/* Layout */
-
-body {
-  margin: 250px 0 100px;
 }
