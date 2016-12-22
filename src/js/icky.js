@@ -13,7 +13,7 @@ import handleScroll from './helpers/handleScroll'
 /**
  * Options
  */
-let defaults = {
+const defaults = {
   selector: '.icky',
   classNameSticky: 'icky-is-sticky',
   offset: 100
@@ -35,11 +35,11 @@ const collect = function () {
     let height
     let marginBottom
     let marginTop
-    let node = el
-    let nodeComputedStyle = window.getComputedStyle(node)
-    let offset = parseInt(el.getAttribute('data-icky-offset'))
-    let parentNode = node.parentNode
-    let parentOffset = parentNode.offsetTop
+    const node = el
+    const nodeComputedStyle = window.getComputedStyle(node)
+    const offset = parseInt(el.getAttribute('data-icky-offset')) || settings.offset
+    const parentNode = node.parentNode
+    const parentOffset = parentNode.offsetTop
 
     marginBottom = parseInt(nodeComputedStyle['margin-bottom'])
     marginTop = parseInt(nodeComputedStyle['margin-top'])
@@ -67,7 +67,7 @@ const init = function (options = {}) {
   elements = collect()
 
   elements.forEach(el => {
-    let parentNodePosition = window.getComputedStyle(el.parentNode).getPropertyValue('position')
+    const parentNodePosition = window.getComputedStyle(el.parentNode).getPropertyValue('position')
 
     if (parentNodePosition === 'static') el.parentNode.style.position = 'relative'
   })
