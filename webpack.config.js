@@ -8,6 +8,7 @@ module.exports = {
     path: './dist',
     publicPath: 'dist/',
     library: 'Icky',
+    libraryTarget: 'var',
     filename: 'icky.js'
   },
   devServer: {
@@ -37,6 +38,11 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin('icky.css'),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
   ],
   eslint: {
     configFile: './.eslintrc'
