@@ -17,23 +17,24 @@ class Icky {
       classNameSticky: 'icky-is-sticky',
       offset: 100
     }
-    this.settings = Object.assign({}, defaults, options)
-    this.elements = this.collectNode()
-    this.elements.map(el => {
+    this._settings = Object.assign({}, defaults, options)
+    this._elements = this.collectNode()
+
+    this._elements.map(el => {
       const parentNodePosition = window.getComputedStyle(el.parentNode).getPropertyValue('position')
 
       if (parentNodePosition === 'static') el.parentNode.style.position = 'relative'
     })
 
-    window.addEventListener('scroll', () => handleScroll(this.elements, this.settings))
+    window.addEventListener('scroll', () => handleScroll(this._elements, this._settings))
   }
 
   collectNode () {
-    const elements = document.querySelectorAll(this.settings.selector)
-    const extendedElements = Array.prototype.map.call(elements, el => {
+    let elements = document.querySelectorAll(this._settings.selector)
+    let extendedElements = Array.prototype.map.call(elements, el => {
       const node = el
       const nodeComputedStyle = window.getComputedStyle(node)
-      const offset = parseInt(el.getAttribute('data-icky-offset')) || this.settings.offset
+      const offset = parseInt(el.getAttribute('data-icky-offset')) || this._settings.offset
       const parentNode = node.parentNode
       const parentOffset = parentNode.offsetTop
 
@@ -55,6 +56,10 @@ class Icky {
     return extendedElements
   }
 }
+
+/**
+ * Initializing
+ */
 
 const init = new Icky()
 
