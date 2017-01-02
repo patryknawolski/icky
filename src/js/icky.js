@@ -30,8 +30,8 @@ class Icky {
   }
 
   collectNode () {
-    let elements = document.querySelectorAll(this._settings.selector)
-    let extendedElements = Array.prototype.map.call(elements, el => {
+    const elements = document.querySelectorAll(this._settings.selector)
+    const extendedElements = Array.prototype.map.call(elements, el => {
       const node = el
       const nodeComputedStyle = window.getComputedStyle(node)
       const offset = parseInt(el.getAttribute('data-icky-offset')) || this._settings.offset
